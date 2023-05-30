@@ -40,6 +40,7 @@
                             ClearListCommandInvoked();
                             break;
                         case "undo":
+                            RestoreUndoStack();
                             break;
                         case "exit":
                             exit = true;
@@ -83,6 +84,11 @@
         public static void UpdateUndoShadow()
         {
             UndoShadowList = new(ListItems);
+        }
+
+        public static void RestoreUndoStack()
+        {
+            ListItems = new(UndoShadowList);
         }
 
         public static void ClearListCommandInvoked()
