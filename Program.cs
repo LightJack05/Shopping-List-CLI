@@ -4,9 +4,12 @@
     {
         public static List<ShoppingListItem> UndoShadowList = new();
         public static List<ShoppingListItem> ListItems = new();
+
+
         public static void Main(string[] args)
         {
-            LoadListFromFile();
+            DataManagement.PrepareAppdata();
+            DataManagement.ListLoadingMenu();
             bool exit = false;
             while (!exit)
             {
@@ -44,7 +47,7 @@
                             break;
                         case "exit":
                             exit = true;
-                            SaveListToFile();
+                            DataManagement.SaveListToFile();
                             break;
                         default:
                             System.Console.WriteLine("Unknown or incomplete command.");
@@ -53,33 +56,7 @@
                 }
             }
         }
-        public static void SaveListToFile()
-        {
-            string jsonDump = JsonConvert.SerializeObject(ListItems);
-            using (StreamWriter sw = new(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "ShoppingList.json")))
-            {
-                sw.Write(jsonDump);
-            }
-        }
 
-        public static void LoadListFromFile()
-        {
-            if (File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "ShoppingList.json")))
-            {
-                try
-                {
-                    using (StreamReader sr = new(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "ShoppingList.json")))
-                    {
-                        string jsonDump = sr.ReadToEnd();
-                        ListItems = JsonConvert.DeserializeObject<List<ShoppingListItem>>(jsonDump);
-                    }
-                }
-                catch (JsonException)
-                {
-                    ListItems = new();
-                }
-            }
-        }
 
         public static void UpdateUndoShadow()
         {
