@@ -4,9 +4,10 @@
 Shopping list in the CLI
 This task is built in stages. Please complete the tasks in the order they are given.
 ### Task 1
-Create a basic program that reads in arƟcles unƟl you type “stop”, and then just outputs them
-again, sorted in alphabeƟcal order.
+Create a basic program that reads in articles until you type “stop”, and then just outputs them
+again, sorted in alphabetical order.
 Example:
+```
 ShoppingList> Tomatoes
 ShoppingList> Apples
 ShoppingList> Potatoes
@@ -14,6 +15,7 @@ ShoppingList> stop
 Apples
 Potatoes
 Tomatoes
+```
 ### Task 2
 Instead of using strings to store the arƟcles, now store the amount of them alongside the
 name. This can be realized with classes.
@@ -47,9 +49,9 @@ exist. To remove all, allow the user to put a * instead of a number.)
 (Will exit the program.)
 ### Task 4
 Now let the program save the list to the disk when it exits and load it back when it starts up.
-How you store those doesn’t really maƩer, but I would recommend either CSV or JSON.
+How you store those doesn’t really matter, but I would recommend either CSV or JSON.
 ### Task 5
-Now how about allowing the user to have mulƟple lists? When the program starts up, and
-sees mulƟple lists saved, it should prompt the user which one to load.
+Now how about allowing the user to have multiple lists? When the program starts up, and
+sees multiple lists saved, it should prompt the user which one to load.
 On exit, the program should ask for a filename for the new list. If it exists, also make sure to
-ask whether to overwrite the exisƟng list.
+ask whether to overwrite the existing list.
